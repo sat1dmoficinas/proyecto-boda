@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Intro</title>
+    <link rel="stylesheet" href="css/intro.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="intro-section" class="intro-section active">
+        <div class="intro-container">
+            <div class="envelope-wrapper" id="envelope-wrapper">
+                <div class="envelope" id="envelope">
+                    <!-- Contenido del sobre -->
+                    <div class="envelope-front">
+                        <div class="envelope-flap">
+                            <div class="seal">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                        </div>
+                        <div class="envelope-body">
+                            <div class="invitation-text">
+                                <h3>Jeison & Sonia</h3>
+                                <p>Invitación de Boda</p>
+                                <p class="instruction">Toca para abrir</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <audio id="background-audio" loop>
+        <source src="assets/audio/background-music.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script>
+        // Código de intro simplificado
+        const envelope = document.getElementById('envelope');
+        const audio = document.getElementById('background-audio');
+        
+        envelope.addEventListener('click', function() {
+            console.log('Sobre clickeado!');
+            this.classList.add('opening');
+            
+            // Intentar reproducir música
+            audio.volume = 0.3;
+            audio.play().then(() => {
+                console.log('Música reproduciéndose');
+            }).catch(e => {
+                console.log('Error audio:', e);
+            });
+        });
+    </script>
+</body>
+</html>

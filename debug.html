@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Intro - Boda Jeison y Sonia</title>
+    
+    <!-- Font Awesome -->
+<!--     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ -->    
+    <style>
+        /* RESET BÁSICO */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .debug-container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .status-box {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+            font-family: monospace;
+            overflow-wrap: break-word;
+        }
+        
+        .status-item {
+            margin: 10px 0;
+            padding: 8px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .status-good {
+            color: #4ade80;
+        }
+        
+        .status-warning {
+            color: #fbbf24;
+        }
+        
+        .status-error {
+            color: #f87171;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 200px;
+            justify-content: center;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .intro-preview {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .intro-preview:hover {
+            background: rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .envelope-sim {
+            width: 200px;
+            height: 140px;
+            background: linear-gradient(145deg, #f9f5f0, #f0e8d8);
+            border-radius: 8px;
+            position: relative;
+            cursor: pointer;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: all 0.5s ease;
+        }
+        
+        .envelope-sim.opening {
+            transform: translateY(-50px) rotateX(180deg);
+        }
+        
+        .envelope-flap {
+            position: absolute;
+            top: -40px;
+            left: -60px;
+            width: 320px;
+            height: 80px;
+            background: linear-gradient(145deg, #f5f0e8, #e8dfd0);
+            clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+            z-index: 2;
+        }
+        
+        .seal {
+            position: absolute;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(145deg, #ff6b6b, #ff4757);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+        
+        .envelope-body {
+            position: absolute;
+            top: 30px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.1); }
+        }
+        
+        .console-log {
+            width: 100%;
+            height: 200px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            text-align: left;
+            overflow-y: auto;
+            margin-top: 20px;
+            color: #00ff00;
+        }
+        
+        .log-entry {
+            margin-bottom: 5px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .timestamp {
+            color: #888;
+            margin-right: 10px;
+        }
+        
+        .instructions {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        
+        .instructions ol {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .instructions li {
+            margin-bottom: 8px;
+        }
+        
+        .file-structure {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .file-item {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .file-icon {
+            color: #4ade80;
+        }
+        
+        .file-missing {
+            color: #f87171;
+        }
+        
+        footer {
+            margin-top: 40px;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .debug-container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- No JavaScript message -->
+    <!-- <div class="no-js-message" style="display: none;">
+        <h2>JavaScript requerido</h2>
+        <p>Para disfrutar de la experiencia completa de esta invitación, por favor activa JavaScript en tu navegador.</p>
+    </div> -->
+
+    <!-- Loading overlay -->
+    <!-- <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Cargando invitación...</p>
+            <div class="loading-progress">
+                <div class="loading-bar"></div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- Intro Animation - Envelope -->
+    <div id="intro-section" class="intro-section active">
+    <div class="intro-container">
+        <!-- Video principal del sobre que se abre -->
+        <div class="video-container" id="video-container">
+            <video id="intro-video" autoplay muted playsinline>
+                <source src="assets/videos/envelope-open.mp4" type="video/mp4">
+                <source src="assets/videos/envelope-open.webm" type="video/webm">
+                <!-- Fallback: imagen estática si no hay video -->
+                <img src="assets/images/envelope-closed.jpg" alt="Sobre cerrado">
+            </video>
+            
+            <!-- Overlay para oscurecer el video si es necesario -->
+            <div class="video-overlay"></div>
+            
+            <!-- Botón para saltar intro -->
+            <button class="skip-button" id="skip-intro">
+                <i class="fas fa-forward"></i>
+                <span>Saltar intro</span>
+            </button>
+            
+            <!-- Instrucciones -->
+            <div class="intro-instructions">
+                <p class="instruction-text">La invitación se abrirá automáticamente...</p>
+                <div class="instruction-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Background Audio -->
+    <audio id="background-audio" preload="auto" loop playsinline>
+        <source src="assets/audio/background-music.mp3" type="audio/mpeg">
+        <source src="assets/audio/background-music.ogg" type="audio/ogg">
+        Tu navegador no soporta audio HTML5.
+    </audio>
+
+    <!-- Music Control -->
+    <button id="music-toggle" class="music-toggle js-only" aria-label="Controlar música">
+        <i class="fas fa-volume-up"></i>
+        <span class="sr-only">Control de música</span>
+    </button>
+    
+    <!-- <script>
+        // Variables globales
+        let audioStarted = false;
+        let introStarted = false;
+        const consoleLog = document.getElementById('console-log');
+        const envelopeSim = document.getElementById('envelope-sim');
+        
+        // Función para añadir mensajes al log
+        function addLog(message, type = 'info') {
+            const now = new Date();
+            const timestamp = `[${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}]`;
+            
+            const logEntry = document.createElement('div');
+            logEntry.className = 'log-entry';
+            logEntry.innerHTML = `<span class="timestamp">${timestamp}</span> ${message}`;
+            
+            if (type === 'error') {
+                logEntry.style.color = '#f87171';
+            } else if (type === 'success') {
+                logEntry.style.color = '#4ade80';
+            } else if (type === 'warning') {
+                logEntry.style.color = '#fbbf24';
+            }
+            
+            consoleLog.appendChild(logEntry);
+            consoleLog.scrollTop = consoleLog.scrollHeight;
+            
+            // También log a la consola del navegador
+            if (type === 'error') {
+                console.error(message);
+            } else {
+                console.log(message);
+            }
+        }
+        
+        // Función para verificar archivos
+        function checkFiles() {
+            const files = [
+                { path: 'assets/audio/background-music.mp3', name: 'Música de fondo', type: 'audio' },
+                { path: 'assets/videos/envelope-open.mp4', name: 'Video de intro', type: 'video' },
+                { path: 'assets/images/envelope-closed.jpg', name: 'Imagen sobre cerrado', type: 'image' },
+                { path: 'assets/images/envelope-open.jpg', name: 'Imagen sobre abierto', type: 'image' },
+                { path: 'js/intro.js', name: 'Script de intro', type: 'js' },
+                { path: 'css/intro.css', name: 'Estilos de intro', type: 'css' }
+            ];
+            
+            const fileStructure = document.getElementById('file-structure');
+            fileStructure.innerHTML = '';
+            
+            files.forEach(file => {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                
+                fetch(file.path, { method: 'HEAD' })
+                    .then(response => {
+                        if (response.ok) {
+                            fileItem.innerHTML = `
+                                <i class="fas fa-check-circle file-icon"></i>
+                                <span>${file.name} <small>(${file.type})</small></span>
+                            `;
+                            addLog(`✓ Archivo encontrado: ${file.path}`, 'success');
+                        } else {
+                            throw new Error('Archivo no encontrado');
+                        }
+                    })
+                    .catch(error => {
+                        fileItem.innerHTML = `
+                            <i class="fas fa-times-circle file-missing"></i>
+                            <span>${file.name} <small>(${file.type}) - NO ENCONTRADO</small></span>
+                        `;
+                        addLog(`✗ Archivo faltante: ${file.path}`, 'error');
+                    });
+                
+                fileStructure.appendChild(fileItem);
+            });
+            
+            // Actualizar estado de archivos
+            setTimeout(() => {
+                const missingFiles = document.querySelectorAll('.file-missing').length;
+                const statusFiles = document.getElementById('status-files');
+                if (missingFiles === 0) {
+                    statusFiles.innerHTML = '<i class="fas fa-folder"></i> Archivos: <span class="status-good">Todos encontrados ✓</span>';
+                } else {
+                    statusFiles.innerHTML = `<i class="fas fa-folder"></i> Archivos: <span class="status-error">${missingFiles} faltante(s)</span>`;
+                }
+            }, 1000);
+        }
+        
+        // Función para probar audio
+        function testAudio() {
+            const audio = document.getElementById('background-audio');
+            const statusAudio = document.getElementById('status-audio');
+            
+            if (!audioStarted) {
+                audio.volume = 0.3;
+                
+                const playPromise = audio.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        audioStarted = true;
+                        statusAudio.innerHTML = '<i class="fas fa-music"></i> Audio: <span class="status-good">Reproduciéndose ✓</span>';
+                        addLog('Audio iniciado correctamente', 'success');
+                    }).catch(error => {
+                        statusAudio.innerHTML = '<i class="fas fa-music"></i> Audio: <span class="status-error">Bloqueado por el navegador</span>';
+                        addLog(`Audio bloqueado: ${error.message}. El usuario necesita interactuar primero.`, 'error');
+                    });
+                }
+            } else {
+                audio.pause();
+                audioStarted = false;
+                statusAudio.innerHTML = '<i class="fas fa-music"></i> Audio: <span class="status-warning">Detenido</span>';
+                addLog('Audio detenido', 'warning');
+            }
+        }
+        
+        // Función para probar video
+        function testVideo() {
+            const video = document.getElementById('test-video');
+            addLog('Probando video...', 'info');
+            
+            video.play()
+                .then(() => {
+                    addLog('Video se reproduce correctamente', 'success');
+                    setTimeout(() => video.pause(), 2000);
+                })
+                .catch(error => {
+                    addLog(`Error al reproducir video: ${error.message}`, 'error');
+                });
+        }
+        
+        // Función para iniciar la intro simulada
+        function startIntro() {
+            if (introStarted) return;
+            
+            introStarted = true;
+            const statusIntro = document.getElementById('status-intro');
+            statusIntro.innerHTML = '<i class="fas fa-play-circle"></i> Intro: <span class="status-good">En progreso...</span>';
+            
+            addLog('Iniciando intro simulada...', 'info');
+            
+            // 1. Iniciar audio
+            testAudio();
+            
+            // 2. Animación del sobre
+            envelopeSim.classList.add('opening');
+            addLog('Animación del sobre iniciada', 'success');
+            
+            // 3. Simular apertura completa
+            setTimeout(() => {
+                addLog('Mostrando carta interior...', 'info');
+                envelopeSim.innerHTML = `
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: white; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                        <h2 style="color: #333; font-family: cursive; margin-bottom: 10px;">Jeison & Sonia</h2>
+                        <p style="color: #666; font-size: 0.9rem; margin-bottom: 5px;">Tienen el honor de invitarles</p>
+                        <p style="color: #666; font-size: 0.9rem; margin-bottom: 5px;">a la celebración de su matrimonio</p>
+                        <p style="color: #d4af37; font-size: 1.2rem; font-weight: bold; margin: 10px 0;">5 de septiembre 2026</p>
+                        <p style="color: #333; font-size: 1rem; margin-bottom: 5px;">Finca Biniagual</p>
+                        <p style="color: #666; font-size: 0.9rem;">17:00 horas</p>
+                    </div>
+                `;
+                addLog('Carta mostrada', 'success');
+                
+                // 4. Completar intro después de 3 segundos
+                setTimeout(() => {
+                    statusIntro.innerHTML = '<i class="fas fa-play-circle"></i> Intro: <span class="status-good">Completada ✓</span>';
+                    addLog('Intro completada, mostrando sitio principal...', 'success');
+                }, 3000);
+            }, 1500);
+        }
+        
+        // Función para saltar intro
+        function skipIntro() {
+            addLog('Intro saltada por el usuario', 'warning');
+            const statusIntro = document.getElementById('status-intro');
+            statusIntro.innerHTML = '<i class="fas fa-play-circle"></i> Intro: <span class="status-warning">Saltada</span>';
+            
+            envelopeSim.style.opacity = '0';
+            envelopeSim.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                envelopeSim.style.display = 'none';
+                addLog('Transición al sitio principal completada', 'success');
+            }, 500);
+        }
+        
+        // Event Listeners
+        document.getElementById('btn-start-intro').addEventListener('click', startIntro);
+        document.getElementById('btn-test-audio').addEventListener('click', testAudio);
+        document.getElementById('btn-test-video').addEventListener('click', testVideo);
+        document.getElementById('btn-skip-intro').addEventListener('click', skipIntro);
+        envelopeSim.addEventListener('click', startIntro);
+        
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            addLog('Debug tool inicializado', 'success');
+            checkFiles();
+            
+            // Verificar estado de JavaScript
+            document.getElementById('status-js').innerHTML = 
+                '<i class="fas fa-code"></i> JavaScript: <span class="status-good">Funcionando ✓</span>';
+        });
+        
+        // Detectar clic en cualquier parte para activar audio
+        document.body.addEventListener('click', function() {
+            if (!audioStarted) {
+                addLog('Interacción del usuario detectada - audio desbloqueado', 'info');
+            }
+        }, { once: true });
+        
+        // Registrar errores globales
+        window.addEventListener('error', function(e) {
+            addLog(`Error global: ${e.message} en ${e.filename}:${e.lineno}`, 'error');
+        });
+    </script> -->
+</body>
+</html>

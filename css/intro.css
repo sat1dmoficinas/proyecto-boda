@@ -1,0 +1,148 @@
+/* intro.css - VERSIÓN SIMPLIFICADA PARA VIDEO */
+
+.intro-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 1;
+    transition: opacity 0.8s ease;
+}
+
+.intro-section.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.intro-container {
+    width: 100%;
+    max-width: 800px;
+    height: 600px;
+    position: relative;
+}
+
+/* Video Container - AHORA ES EL ELEMENTO PRINCIPAL */
+.video-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+#intro-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.2) 0%,
+        rgba(0,0,0,0.4) 100%
+    );
+    pointer-events: none;
+}
+
+/* Botón Saltar */
+.skip-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background: rgba(255,255,255,0.9);
+    color: var(--color-dark);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.skip-button:hover {
+    background: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Instrucciones */
+.intro-instructions {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    font-family: var(--font-body);
+    z-index: 5;
+}
+
+.instruction-text {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    opacity: 0.9;
+    animation: pulse 2s infinite;
+}
+
+.instruction-icon {
+    font-size: 1.5rem;
+    color: #ff6b6b;
+    animation: bounce 1.5s infinite;
+}
+
+/* Animaciones */
+@keyframes pulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Para móviles */
+@media (max-width: 768px) {
+    .intro-container {
+        height: 400px;
+        margin: 20px;
+    }
+    
+    .instruction-text {
+        font-size: 0.8rem;
+    }
+    
+    .skip-button {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .intro-container {
+        height: 300px;
+    }
+    
+    .intro-instructions {
+        bottom: 40px;
+    }
+}

@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boda Jeison y Sonia - 5 de Septiembre 2026</title>
+    <meta name="description" content="Invitación digital para la boda de Jeison y Sonia. Nos casamos el 5 de septiembre de 2026 en Finca La Losilla.">
+    <meta name="author" content="Jeison y Sonia">
+
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#f5f0e8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/intro.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    
+    <!-- Open Graph for social sharing -->
+    <meta property="og:title" content="Boda Jeison y Sonia">
+    <meta property="og:description" content="Nos casamos el 5 de septiembre de 2026. ¡Esperamos verte en nuestra celebración!">
+    <meta property="og:image" content="assets/images/og-image.jpg">
+    <meta property="og:url" content="https://boda-jeison-sonia.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Boda Jeison y Sonia">
+    <meta name="twitter:description" content="Nos casamos el 5 de septiembre de 2026">
+    <meta name="twitter:image" content="assets/images/og-image.jpg">
+    
+    <!-- ANALYTICS - Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+        
+        // Track intro completion
+        function trackIntroCompletion() {
+            gtag('event', 'intro_completed', {
+                'event_category': 'Engagement',
+                'event_label': 'User completed intro animation'
+            });
+        }
+        
+        // Track RSVP submission
+        function trackRSVPSubmission() {
+            gtag('event', 'rsvp_submitted', {
+                'event_category': 'Conversion',
+                'event_label': 'User submitted RSVP form'
+            });
+        }
+    </script>
+    
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Boda de Jeison y Sonia",
+        "description": "Celebración del matrimonio de Jeison y Sonia",
+        "startDate": "2026-09-05T17:00:00",
+        "endDate": "2026-09-06T03:00:00",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+            "@type": "Place",
+            "name": "Finca La Losilla",
+            "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "ES",
+                "addressRegion": "Islas Baleares"
+            }
+        },
+        "image": [
+            "https://boda-jeison-sonia.com/assets/images/og-image.jpg"
+        ],
+        "organizer": {
+            "@type": "Person",
+            "name": "Mar y Jaume"
+        },
+        "performer": {
+            "@type": "Person",
+            "name": "Mar y Jaume"
+        }
+    }
+    </script>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="css/styles.css" as="style">
+    <link rel="preload" href="js/intro.js" as="script">
+    <link rel="preload" href="assets/videos/intro-video.mp4" as="video" type="video/mp4">
+    
+    <!-- Progressive enhancement -->
+    <noscript>
+        <style>
+            .js-only { display: none !important; }
+            .no-js-message { 
+                display: block !important; 
+                padding: 20px; 
+                background: #f5f0e8; 
+                text-align: center; 
+                color: #6b7c56; 
+            }
+        </style>
+    </noscript>
+</head>
+<body class="js">
+    <!-- No JavaScript message -->
+    <div class="no-js-message" style="display: none;">
+        <h2>JavaScript requerido</h2>
+        <p>Para disfrutar de la experiencia completa de esta invitación, por favor activa JavaScript en tu navegador.</p>
+    </div>
+
+    <!-- Loading overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Cargando invitación...</p>
+            <div class="loading-progress">
+                <div class="loading-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Intro Animation - Envelope -->
+    <div id="intro-section" class="intro-section active">
+    <div class="intro-container">
+        <!-- Video principal del sobre que se abre -->
+        <div class="video-container" id="video-container">
+            <video id="intro-video" autoplay muted playsinline>
+                <source src="assets/videos/envelope-open.mp4" type="video/mp4">
+                <source src="assets/videos/envelope-open.webm" type="video/webm">
+                <!-- Fallback: imagen estática si no hay video -->
+                <img src="assets/images/envelope-closed.jpg" alt="Sobre cerrado">
+            </video>
+            
+            <!-- Overlay para oscurecer el video si es necesario -->
+            <div class="video-overlay"></div>
+            
+            <!-- Botón para saltar intro -->
+            <button class="skip-button" id="skip-intro">
+                <i class="fas fa-forward"></i>
+                <span>Saltar intro</span>
+            </button>
+            
+            <!-- Instrucciones -->
+            <div class="intro-instructions">
+                <p class="instruction-text">La invitación se abrirá automáticamente...</p>
+                <div class="instruction-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Background Audio -->
+    <audio id="background-audio" preload="auto" loop playsinline>
+        <source src="assets/audio/background-music.mp3" type="audio/mpeg">
+        <source src="assets/audio/background-music.ogg" type="audio/ogg">
+        Tu navegador no soporta audio HTML5.
+    </audio>
+
+    <!-- Music Control -->
+    <button id="music-toggle" class="music-toggle js-only" aria-label="Controlar música">
+        <i class="fas fa-volume-up"></i>
+        <span class="sr-only">Control de música</span>
+    </button>
+
+    <!-- Main Content (hidden initially) -->
+    <main id="main-content" class="main-content hidden">
+        <!-- Navigation -->
+        <!--<nav class="main-nav js-only">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <span class="nav-logo">M&J</span>
+                    <span class="nav-date">08.05.2027</span>
+                </div>
+                <button class="nav-toggle" id="nav-toggle" aria-label="Menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="nav-menu" id="nav-menu">
+                    <a href="#home" class="nav-link active">Inicio</a>
+                    <a href="#countdown" class="nav-link">Cuenta atrás</a>
+                    <a href="#details" class="nav-link">Detalles</a>
+                    <a href="#timeline" class="nav-link">Programa</a>
+                    <a href="#accommodation" class="nav-link">Alojamiento</a>
+                    <a href="#faq" class="nav-link">FAQ</a>
+                    <a href="#gifts" class="nav-link">Regalos</a>
+                    <a href="#rsvp" class="nav-link nav-cta">Confirmar</a>
+                </div>
+            </div>
+        </nav> -->
+
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-video-container">
+                <video class="hero-video" autoplay loop muted playsinline poster="assets/images/hero-poster.jpg">
+                    <!-- <source src="assets/videos/hero-background.mp4" type="video/mp4"> -->
+                    <!-- <source src="assets/videos/hero-background.webm" type="video/webm"> -->
+                </video>
+                <div class="hero-overlay"></div>
+            </div>
+            
+            <div class="hero-content">
+                <p class="hero-subtitle animate-on-scroll">Nos casamos</p>
+                <h1 class="hero-title animate-on-scroll">
+                    <span class="name">Jeison & Sonia</span>
+                </h1>
+                
+                <div class="hero-divider animate-on-scroll">
+                    <div class="divider-line"></div>
+                    <div class="divider-icon">✦</div>
+                    <div class="divider-line"></div>
+                </div>
+                
+                <p class="hero-date animate-on-scroll">5 de septiembre de 2026</p>
+                
+                <div class="hero-scroll animate-on-scroll">
+                    <p class="scroll-text">Desliza para descubrir</p>
+                    <div class="scroll-icon">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Countdown Section -->
+        <section id="countdown" class="section countdown-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-title">Cuenta atrás</h2>
+                    <p class="section-subtitle">Para el día más especial de nuestras vidas</p>
+                </div>
+                
+                <div class="countdown-container animate-on-scroll">
+                    <div class="countdown-grid">
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="days">000</div>
+                            <div class="countdown-label">Días</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="hours">00</div>
+                            <div class="countdown-label">Horas</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="minutes">00</div>
+                            <div class="countdown-label">Minutos</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="seconds">00</div>
+                            <div class="countdown-label">Segundos</div>
+                        </div>
+                    </div>
+                    
+                    <div class="countdown-message">
+                        <p>¡Nos vemos pronto!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="section-divider">
+            <div class="divider-content">
+                <div class="divider-line"></div>
+                <div class="divider-icon">❤</div>
+                <div class="divider-line"></div>
+            </div>
+        </div>
+
+        <!-- Details Section -->
+        <section id="details" class="section details-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-title">Detalles del día</h2>
+                    <p class="section-subtitle">Todo lo que necesitas saber</p>
+                </div>
+                
+                <div class="details-card animate-on-scroll">
+                    <div class="details-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    
+                    <h3 class="details-card-title">Localización</h3>
+                    
+                    <div class="location-info">
+                        <h4>Finca La Losilla</h4>
+                        <div class="location-address">
+                            <p>Camino de la Mota, km 5</p>
+                            <p>13610, Campo de Criptana, Ciudad Real</p>
+                        </div>
+                    </div>
+                    
+                    <div class="time-info">
+                        <div class="time-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="time-details">
+                            <p><strong>Ceremonia:</strong> 18:00 h</p>
+                            <p><strong>Recepción:</strong> 19:00 h</p>
+                            <p><strong>Cóctel:</strong> 19:30 h</p>
+                            <p><strong>Cena:</strong> 21:00 h</p>
+                        </div>
+                    </div>
+                    
+                    <div class="location-image">
+                        <img src="assets/images/location.jpg" alt="Finca La Losilla" loading="lazy">
+                        <div class="image-overlay"></div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <a href="https://maps.app.goo.gl/tocqnTQqtnpCG8CG9" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            class="btn btn-outline"
+                            onclick="gtag('event', 'open_maps', {'event_category': 'Engagement'})">
+                            <i class="fas fa-map-marked-alt"></i>
+                            Ver en Maps
+                        </a>
+                        
+                        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Jeison+y+Sonia&dates=20260905T170000Z/20270509T030000Z&location=Finca+La+Losilla&details=Invitación+para+la+boda+de+Jeison+y+Sonia"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn btn-outline"
+                            onclick="gtag('event', 'add_calendar', {'event_category': 'Engagement'})">
+                            <i class="fas fa-calendar-plus"></i>
+                            Añadir al calendario
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="section-divider">
+            <div class="divider-content">
+                <div class="divider-line"></div>
+                <div class="divider-icon">✦</div>
+                <div class="divider-line"></div>
+            </div>
+        </div>
+
+        <!-- Timeline Section -->
+        <section id="timeline" class="section timeline-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-title">Programa del día</h2>
+                    <p class="section-subtitle">Lo que tenemos preparado para vosotros</p>
+                </div>
+                
+                <div class="timeline-container animate-on-scroll">
+                    <div class="timeline">
+                        <!-- Timeline Item 1 -->
+                        <div class="timeline-item">
+                            <div class="timeline-time">17:00</div>
+                            <div class="timeline-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3>Llegada de invitados</h3>
+                                <p>Recepción y bienvenida en la finca</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Timeline Item 2 -->
+                        <div class="timeline-item">
+                            <div class="timeline-time">17:30</div>
+                            <div class="timeline-icon">
+                                <i class="fas fa-glass-cheers"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3>Bebida de bienvenida</h3>
+                                <p>Cóctel de bienvenida mientras esperamos</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Timeline Item 3 -->
+                        <div class="timeline-item">
+                            <div class="timeline-time">18:00</div>
+                            <div class="timeline-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3>Ceremonia</h3>
+                                <p>El momento más especial del día</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Timeline Item 4 -->
+                        <div class="timeline-item">
+                            <div class="timeline-time">19:00</div>
+                            <div class="timeline-icon">
+                                <i class="fas fa-wine-glass-alt"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3>Cóctel</h3>
+                                <p>Aperitivos y bebidas en los jardines</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Timeline Item 5 -->
+                        <div class="timeline-item">
+                            <div class="timeline-time">21:00</div>
+                            <div class="timeline-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3>Banquete</h3>
+                                <p>Cena y celebración</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Timeline Item 6 -->
+                        <div class="timeline-item">
+                            <div class="timeline-time">00:00</div>
+                            <div class="timeline-icon">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3>Fiesta</h3>
+                                <p>¡A bailar hasta el amanecer!</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Timeline Item 7 -->
+                        <div class="timeline-item">
+                            <div class="timeline-time">03:00</div>
+                            <div class="timeline-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3>Fin de fiesta</h3>
+                                <p>Despedida y buenos recuerdos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="section-divider">
+            <div class="divider-content">
+                <div class="divider-line"></div>
+                <div class="divider-icon">✦</div>
+                <div class="divider-line"></div>
+            </div>
+        </div>
+
+        <!-- Accommodation Section -->
+        <!-- <section id="accommodation" class="section accommodation-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <div class="section-icon">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <h2 class="section-title">Alojamiento</h2>
+                    <p class="section-subtitle">Recomendaciones para tu estancia</p>
+                </div>
+                
+                <div class="accommodation-grid animate-on-scroll">
+                    Hotel 1
+                    <div class="accommodation-card">
+                        <div class="accommodation-header">
+                            <h3>Agroturismo Es Quatre Cantons</h3>
+                            <p class="accommodation-subtitle">Más cerca de la boda</p>
+                        </div>
+                        <div class="accommodation-features">
+                            <span class="feature-tag">✓ A 5 minutos</span>
+                            <span class="feature-tag">✓ Parking gratuito</span>
+                            <span class="feature-tag">✓ Desayuno incluido</span>
+                        </div>
+                        <div class="accommodation-actions">
+                            <a href="https://maps.app.goo.gl/qd2FewV6G4LyeJwA8" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            class="btn btn-small"
+                            onclick="gtag('event', 'view_hotel_1', {'event_category': 'Accommodation'})">
+                                <i class="fas fa-external-link-alt"></i>
+                                Ver detalles
+                            </a>
+                        </div>
+                    </div>
+                    
+                    Hotel 2 
+                    <div class="accommodation-card">
+                        <div class="accommodation-header">
+                            <h3>La Pérgola</h3>
+                            <p class="accommodation-subtitle">Alojamiento recomendado</p>
+                        </div>
+                        <div class="accommodation-features">
+                            <span class="feature-tag">✓ A 10 minutos</span>
+                            <span class="feature-tag">✓ Piscina</span>
+                            <span class="feature-tag">✓ Vistas al mar</span>
+                        </div>
+                        <div class="accommodation-actions">
+                            <a href="https://maps.app.goo.gl/YzWdsgTx8hJULbwRA" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            class="btn btn-small"
+                            onclick="gtag('event', 'view_hotel_2', {'event_category': 'Accommodation'})">
+                                <i class="fas fa-external-link-alt"></i>
+                                Ver detalles
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accommodation-note animate-on-scroll">
+                    <p><strong>Nota:</strong> Te recomendamos reservar con antelación debido a la temporada alta.</p>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- Divider -->
+        <div class="section-divider">
+            <div class="divider-content">
+                <div class="divider-line"></div>
+                <div class="divider-icon">✦</div>
+                <div class="divider-line"></div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section faq-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <div class="section-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h2 class="section-title">Preguntas frecuentes</h2>
+                </div>
+                
+                <div class="faq-container animate-on-scroll">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>¿Puedo llevar acompañante?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sí, por supuesto. Al confirmar tu asistencia, podrás indicar el número de invitados que vendrán contigo.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>¿Habrá parking disponible?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sí, la finca cuenta con amplio parking gratuito para todos los invitados.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>¿Qué código de vestimenta debo seguir?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Elegante-casual. Para ellos, traje o pantalón de vestir con camisa. Para ellas, vestido o conjunto elegante.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 4 -->
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>¿Puedo tomar fotos durante la ceremonia?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Durante la ceremonia tendremos un fotógrafo profesional. Te pedimos que guardes el móvil para vivir el momento sin distracciones. Después, ¡todos los selfies que quieras!</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 5 -->
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>¿Y si tengo alguna alergia alimentaria?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Indícanos cualquier alergia o restricción alimentaria en el formulario de confirmación. Nos aseguraremos de que tengas opciones adecuadas.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 6 -->
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>¿Hasta qué hora será la fiesta?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>La celebración formal terminará sobre las 03:00, pero la música continuará para los más animados.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="section-divider">
+            <div class="divider-content">
+                <div class="divider-line"></div>
+                <div class="divider-icon">✦</div>
+                <div class="divider-line"></div>
+            </div>
+        </div>
+
+        <!-- Gifts Section -->
+        <!-- <section id="gifts" class="section gifts-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-title">Regalos</h2>
+                </div>
+                
+                <div class="gifts-content animate-on-scroll">
+                    <div class="gifts-message">
+                        <p class="gifts-text">
+                            Vuestra presencia es el mejor regalo que podríamos recibir.<br>
+                            Si deseas hacernos un detalle, puedes colaborar con nuestra luna de miel.
+                        </p>
+                        
+                        <div class="gifts-info">
+                            <div class="gift-option">
+                                <div class="gift-icon">
+                                    <i class="fas fa-hands-helping"></i>
+                                </div>
+                                <div class="gift-details">
+                                    <h3>Aportación</h3>
+                                    <p>Puedes realizar una transferencia a nuestra cuenta bancaria</p>
+                                    <div class="bank-details">
+                                        <p><strong>ESXX XXXX XXXX XXXX XXXX XXXX</strong></p>
+                                        <p>A nombre de: Mar y Jaume</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="gifts-note">
+                            <p><i class="fas fa-heart"></i> Lo más importante es que vengas a celebrar con nosotros este día tan especial.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- Divider -->
+        <div class="section-divider">
+            <div class="divider-content">
+                <div class="divider-line"></div>
+                <div class="divider-icon">✦</div>
+                <div class="divider-line"></div>
+            </div>
+        </div>
+
+        <!-- RSVP Section -->
+        <section id="rsvp" class="section rsvp-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-title">Confirma tu asistencia</h2>
+                    <p class="section-subtitle">Esperamos contar contigo</p>
+                </div>
+                
+                <div class="rsvp-container animate-on-scroll">
+                    <form id="rsvp-form" class="rsvp-form">
+                        <!-- Personal Info -->
+                        <div class="form-group">
+                            <label for="guest-name" class="form-label">Nombre completo *</label>
+                            <input type="text" 
+                                id="guest-name" 
+                                name="guest-name" 
+                                class="form-input" 
+                                placeholder="Tu nombre" 
+                                required
+                                autocomplete="name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="guest-email" class="form-label">Correo electrónico</label>
+                            <input type="email" 
+                                id="guest-email" 
+                                name="guest-email" 
+                                class="form-input" 
+                                placeholder="tu@email.com"
+                                autocomplete="email">
+                        </div>
+                        
+                        <!-- Attendance -->
+                        <div class="form-group">
+                            <p class="form-label">¿Asistirás? *</p>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="attendance" value="yes" checked required>
+                                    <span class="radio-label">Sí, asistiré</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="attendance" value="no" required>
+                                    <span class="radio-label">No podré asistir</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Guests Number -->
+                        <div class="form-group">
+                            <label for="guests-number" class="form-label">Número de invitados (incluyéndote)</label>
+                            <select id="guests-number" name="guests-number" class="form-select">
+                                <option value="1">1 persona</option>
+                                <option value="2">2 personas</option>
+                                <option value="3">3 personas</option>
+                                <option value="4">4 personas</option>
+                                <option value="5">5 personas</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Allergies -->
+                        <div class="form-group allergies-group">
+                            <div class="allergies-header">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <p class="form-label">Alergias e intolerancias alimentarias</p>
+                            </div>
+                            <p class="form-help">Selecciona todas las que apliquen:</p>
+                            
+                            <div class="checkbox-grid">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="allergy" value="gluten">
+                                    <span class="checkbox-label">Sin gluten / Celíaco</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="allergy" value="lactose">
+                                    <span class="checkbox-label">Sin lactosa</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="allergy" value="vegetarian">
+                                    <span class="checkbox-label">Vegetariano</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="allergy" value="vegan">
+                                    <span class="checkbox-label">Vegano</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="allergy" value="nuts">
+                                    <span class="checkbox-label">Alergia a frutos secos</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="allergy" value="seafood">
+                                    <span class="checkbox-label">Alergia a mariscos</span>
+                                </label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="other-allergy" class="form-label">Otras alergias o restricciones:</label>
+                                <input type="text" 
+                                    id="other-allergy" 
+                                    name="other-allergy" 
+                                    class="form-input" 
+                                    placeholder="Ej: alergia al huevo, intolerancia a la fructosa...">
+                            </div>
+                        </div>
+                        
+                        <!-- Message -->
+                        <div class="form-group">
+                            <label for="guest-message" class="form-label">Mensaje para los novios (opcional)</label>
+                            <textarea id="guest-message" 
+                                name="guest-message" 
+                                class="form-textarea" 
+                                placeholder="Escríbenos unas palabras, un recuerdo o lo que quieras compartir con nosotros..."
+                                rows="4"></textarea>
+                        </div>
+                        
+                        <!-- Submit -->
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-submit">
+                                <i class="fas fa-paper-plane"></i>
+                                Enviar confirmación
+                            </button>
+                            <p class="form-note">* Campos obligatorios</p>
+                        </div>
+                        
+                        <!-- Success Message (hidden initially) -->
+                        <div id="success-message" class="success-message hidden">
+                            <div class="success-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h3>¡Confirmación enviada!</h3>
+                            <p>Gracias por confirmar tu asistencia. Nos vemos el 8 de mayo de 2027.</p>
+                            <button type="button" class="btn btn-success" id="close-success">
+                                Cerrar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-heart">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    
+                    <h3 class="footer-title">Mar & Jaume</h3>
+                    <p class="footer-date">8 de mayo de 2027</p>
+                    
+                    <div class="footer-social">
+                        <p>Comparte nuestro día especial</p>
+                        <div class="social-icons">
+                            <button class="social-icon" onclick="shareOnFacebook()" aria-label="Compartir en Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </button>
+                            <button class="social-icon" onclick="shareOnWhatsApp()" aria-label="Compartir en WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                            <button class="social-icon" onclick="shareByEmail()" aria-label="Compartir por email">
+                                <i class="fas fa-envelope"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-copyright">
+                        <p>Con ❤️ para nuestros invitados</p>
+                        <p class="footer-note">Hecho con amor por The Digital Yes</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Back to Top -->
+    <button id="back-to-top" class="back-to-top js-only" aria-label="Volver arriba">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript Files -->
+    <script src="js/intro.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/countdown.js" defer></script>
+    <script src="js/form.js" defer></script>
+    <script src="js/animations.js" defer></script>
+    <script src="js/analytics.js" defer></script>
+    
+    <!-- Initialize PWA -->
+    <script>
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registrado con éxito:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Error al registrar ServiceWorker:', error);
+                    });
+            });
+        }
+        
+        // Check if app is installed
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            const deferredPrompt = e;
+            
+            // Show install button if needed
+            setTimeout(() => {
+                if (!window.matchMedia('(display-mode: standalone)').matches) {
+                    showInstallPrompt(deferredPrompt);
+                }
+            }, 10000); // Show after 10 seconds
+        });
+        
+        function showInstallPrompt(deferredPrompt) {
+            const installBtn = document.createElement('button');
+            installBtn.className = 'install-prompt';
+            installBtn.innerHTML = '<i class="fas fa-download"></i> Instalar app';
+            installBtn.onclick = () => {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('Usuario aceptó instalar la app');
+                    }
+                    installBtn.remove();
+                });
+            };
+            document.body.appendChild(installBtn);
+        }
+    </script>
+</body>
+</html>
