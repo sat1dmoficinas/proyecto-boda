@@ -1,6 +1,6 @@
-# 🎉 Boda Mar y Jaume - Sitio Web de Invitación
+# 🎉 Boda Jeison y Sonia - Sitio Web de Invitación
 
-Un sitio web elegante y moderno para la invitación digital de la boda de Mar y Jaume.
+Un sitio web elegante y moderno para la invitación digital de la boda de Jeison y Sonia.
 
 ## 🚀 Características
 

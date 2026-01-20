@@ -1,7 +1,7 @@
 // js/countdown.js
 class CountdownTimer {
     constructor() {
-        this.weddingDate = new Date('2026-09-05T17:00:00'); // 8 de mayo 2027, 17:00
+        this.weddingDate = new Date('2026-09-05T17:00:00'); // 5 de septiembre 2026, 17:00
         this.daysElement = document.getElementById('days');
         this.hoursElement = document.getElementById('hours');
         this.minutesElement = document.getElementById('minutes');

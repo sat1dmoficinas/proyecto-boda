@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Social sharing functions
 function shareOnFacebook() {
     const url = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent('Invitación para la boda de Mar y Jaume');
+    const text = encodeURIComponent('Invitación para la boda de Jeison y Sonia');
     window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`, '_blank');
     
     if (typeof gtag !== 'undefined') {
@@ -311,7 +311,7 @@ function shareOnFacebook() {
 }
 
 function shareOnWhatsApp() {
-    const text = encodeURIComponent('¡Invitación para la boda de Mar y Jaume! ' + window.location.href);
+    const text = encodeURIComponent('¡Invitación para la boda de Jeison y Sonia! ' + window.location.href);
     window.open(`https://wa.me/?text=${text}`, '_blank');
     
     if (typeof gtag !== 'undefined') {
@@ -323,8 +323,8 @@ function shareOnWhatsApp() {
 }
 
 function shareByEmail() {
-    const subject = encodeURIComponent('Invitación Boda Mar y Jaume');
-    const body = encodeURIComponent(`Te invito a ver la invitación digital para la boda de Mar y Jaume:\n\n${window.location.href}`);
+    const subject = encodeURIComponent('Invitación Boda Jeison y Sonia');
+    const body = encodeURIComponent(`Te invito a ver la invitación digital para la boda de Jeison y Sonia:\n\n${window.location.href}`);
     window.open(`mailto:?subject=${subject}&body=${body}`);
     
     if (typeof gtag !== 'undefined') {

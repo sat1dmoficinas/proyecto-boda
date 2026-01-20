@@ -196,7 +196,7 @@ self.addEventListener('push', event => {
   };
   
   event.waitUntil(
-    self.registration.showNotification(data.title || 'Boda Mar y Jaume', options)
+    self.registration.showNotification(data.title || 'Boda Jeison y Sonia', options)
   );
 });
 
