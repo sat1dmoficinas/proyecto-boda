@@ -33,7 +33,6 @@ boda-mar-jaume/
 │ ├── countdown.js
 │ ├── form.js
 │ ├── animations.js
-│ └── analytics.js
 └── assets/
 ├── videos/
 ├── images/

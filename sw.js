@@ -20,7 +20,6 @@ const PRECACHE_ASSETS = [
   '/js/countdown.js',
   '/js/form.js',
   '/js/animations.js',
-  '/js/analytics.js',
   
   // Fonts
   'https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600&display=swap',

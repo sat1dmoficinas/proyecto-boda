@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Reproducir música de fondo
         if (backgroundAudio) {
-            backgroundAudio.volume = 0.3;
+            backgroundAudio.volume = 1.0;
             backgroundAudio.play().catch(e => {
                 console.log('🔇 Audio bloqueado, necesita interacción');
             });
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // 7. BOTÓN DE MÚSICA (OPCIONAL)
-    const musicToggle = document.getElementById('music-toggle');
+    /* const musicToggle = document.getElementById('music-toggle');
     if (musicToggle && backgroundAudio) {
         musicToggle.style.display = 'flex';
         musicToggle.addEventListener('click', function() {
@@ -105,5 +105,73 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.querySelector('i').className = 'fas fa-volume-mute';
             }
         });
+    } */
+    
+    function completeIntro() {
+    if (introCompleted) return;
+    introCompleted = true;
+    
+    // Guardar que ya se vio
+    localStorage.setItem('introSeen', 'true');
+    
+    // Fade out de la intro
+    if (introSection) {
+        introSection.style.opacity = '0';
+        introSection.style.transition = 'opacity 0.8s ease';
+        
+        setTimeout(() => {
+            introSection.classList.add('hidden');
+            
+            // Quitar la clase que bloquea el scroll
+            document.body.classList.remove('no-scroll');
+            
+            // Mostrar contenido principal
+            if (mainContent) {
+                mainContent.classList.remove('hidden');
+                mainContent.style.opacity = '0';
+                mainContent.style.animation = 'fadeIn 1s ease forwards';
+                
+                // Forzar reflow para activar animación
+                void mainContent.offsetWidth;
+            }
+        }, 800);
     }
+}
+
+function skipIntro() {
+    if (introCompleted) return;
+    
+    console.log('Saltando intro...');
+    introCompleted = true;
+    localStorage.setItem('introSeen', 'true');
+    
+    // Pausar video si está reproduciéndose
+    if (introVideo) {
+        introVideo.pause();
+    }
+    
+    // Ocultar intro inmediatamente
+    if (introSection) {
+        introSection.classList.add('hidden');
+    }
+    
+    // Quitar la clase que bloquea el scroll
+    document.body.classList.remove('no-scroll');
+    
+    // Mostrar contenido principal
+    if (mainContent) {
+        mainContent.classList.remove('hidden');
+        mainContent.style.opacity = '1';
+        
+        // Forzar reflow para asegurar que se muestre
+        void mainContent.offsetWidth;
+    }
+    
+}
+
+// Al inicio del script, si ya se vio la intro, permitir scroll inmediatamente
+if (localStorage.getItem('introSeen') === 'true') {
+    console.log('Intro ya vista anteriormente, permitiendo scroll...');
+    document.body.classList.remove('no-scroll');
+}
 });

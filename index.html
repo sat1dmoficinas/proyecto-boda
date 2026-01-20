@@ -124,7 +124,7 @@
         </style>
     </noscript>
 </head>
-<body class="js">
+<body class="js no-scroll">
     <!-- No JavaScript message -->
     <div class="no-js-message" style="display: none;">
         <h2>JavaScript requerido</h2>
@@ -136,7 +136,7 @@
     <div class="intro-container">
         <!-- Video principal del sobre que se abre -->
         <div class="video-container" id="video-container">
-            <video id="intro-video" autoplay muted playsinline>
+            <video id="intro-video" preload="auto" muted playsinline>
                 <source src="assets/videos/envelope-open.mp4" type="video/mp4">
                 <source src="assets/videos/envelope-open.webm" type="video/webm">
                 <!-- Fallback: imagen estática si no hay video -->
@@ -837,7 +837,6 @@
     <script src="js/countdown.js" defer></script>
     <script src="js/form.js" defer></script>
     <script src="js/animations.js" defer></script>
-    <script src="js/analytics.js" defer></script>
     
     <!-- Initialize PWA -->
     <script>
