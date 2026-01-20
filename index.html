@@ -131,17 +131,6 @@
         <p>Para disfrutar de la experiencia completa de esta invitación, por favor activa JavaScript en tu navegador.</p>
     </div>
 
-    <!-- Loading overlay -->
-    <div id="loading-overlay" class="loading-overlay">
-        <div class="loading-content">
-            <div class="loading-spinner"></div>
-            <p class="loading-text">Cargando invitación...</p>
-            <div class="loading-progress">
-                <div class="loading-bar"></div>
-            </div>
-        </div>
-    </div>
-
     <!-- Intro Animation - Envelope -->
     <div id="intro-section" class="intro-section active">
     <div class="intro-container">
@@ -153,26 +142,9 @@
                 <!-- Fallback: imagen estática si no hay video -->
                 <img src="assets/images/envelope-closed.jpg" alt="Sobre cerrado">
             </video>
-            
-            <!-- Overlay para oscurecer el video si es necesario -->
-            <div class="video-overlay"></div>
-            
-            <!-- Botón para saltar intro -->
-            <button class="skip-button" id="skip-intro">
-                <i class="fas fa-forward"></i>
-                <span>Saltar intro</span>
-            </button>
-            
-            <!-- Instrucciones -->
-            <div class="intro-instructions">
-                <p class="instruction-text">La invitación se abrirá automáticamente...</p>
-                <div class="instruction-icon">
-                    <i class="fas fa-heart"></i>
-                </div>
-            </div>
         </div>
     </div>
-</div>
+    </div>
 
     <!-- Background Audio -->
     <audio id="background-audio" preload="auto" loop playsinline>
@@ -855,9 +827,9 @@
     </main>
 
     <!-- Back to Top -->
-    <button id="back-to-top" class="back-to-top js-only" aria-label="Volver arriba">
+    <!-- <button id="back-to-top" class="back-to-top js-only" aria-label="Volver arriba">
         <i class="fas fa-chevron-up"></i>
-    </button>
+    </button> -->
 
     <!-- JavaScript Files -->
     <script src="js/intro.js" defer></script>
