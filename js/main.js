@@ -87,9 +87,9 @@ class MainApp {
         }, observerOptions);
 
         // Observe all elements with animate-on-scroll class
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    /*     document.querySelectorAll('.animate-on-scroll').forEach(el => {
             observer.observe(el);
-        });
+        }); */
 
         // Observe sections for active nav link
         const sectionObserver = new IntersectionObserver((entries) => {

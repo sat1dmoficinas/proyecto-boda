@@ -12,7 +12,7 @@ class WeddingAnimations {
         this.setupParallaxEffects();
         this.setupHoverAnimations();
         this.setupConfetti();
-        this.setupTextAnimations();
+       /*  this.setupTextAnimations(); */
     }
 
     setupIntersectionObserver() {
@@ -203,7 +203,7 @@ class WeddingAnimations {
         return colors[Math.floor(Math.random() * colors.length)];
     }
 
-    setupTextAnimations() {
+/*     setupTextAnimations() {
         // Animate hero title letters
         const heroTitle = document.querySelector('.hero-title');
         if (!heroTitle) return;
@@ -236,7 +236,7 @@ class WeddingAnimations {
             }
         `;
         document.head.appendChild(letterStyle);
-    }
+    } */
 
     // Utility function to create floating hearts
     createFloatingHearts(count = 10, container = document.body) {
@@ -374,4 +374,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     `;
     document.head.appendChild(loadingStyle);
+});
+document.addEventListener('DOMContentLoaded', () => {
+  const heroElements = document.querySelectorAll('.animate-on-scroll');
+
+  const heroObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        heroElements.forEach((el, index) => {
+          setTimeout(() => {
+            el.classList.add('animated');
+          }, index * 300); // 300ms entre cada elemento
+        });
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  if (heroElements.length) {
+    heroObserver.observe(heroElements[0]);
+  }
 });
