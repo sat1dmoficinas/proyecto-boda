@@ -1367,13 +1367,22 @@ ul, ol {
 }
 
 /* Animations for scroll */
+.animate-on-scroll-hero {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.animate-on-scroll-hero.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
-
 .animate-on-scroll.animated {
   opacity: 1;
   transform: translateY(0);
 }
+

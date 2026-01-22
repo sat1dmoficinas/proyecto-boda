@@ -376,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.head.appendChild(loadingStyle);
 });
 document.addEventListener('DOMContentLoaded', () => {
-  const heroElements = document.querySelectorAll('.animate-on-scroll');
+  const heroElements = document.querySelectorAll('#home .animate-on-scroll-hero');
 
   const heroObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
