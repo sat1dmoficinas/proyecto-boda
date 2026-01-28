@@ -567,3 +567,84 @@
     overflow-x: hidden;
   }
 }
+/* ============ TIMELINE MOBILE CLEAN LAYOUT ============ */
+
+.timeline-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* Ocultamos el timeline desktop */
+  .timeline {
+    display: none;
+  }
+
+  /* Mostramos el móvil */
+  .timeline-mobile {
+    display: block;
+    position: relative;
+    margin-top: 40px;
+  }
+
+  .timeline-mobile-line {
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(0,0,0,0.2);
+  }
+
+  .timeline-mobile-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .timeline-mobile-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--color-light);
+    border: 2px solid var(--color-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    z-index: 2;
+    font-size: 1.1rem;
+  }
+
+  .timeline-mobile-content {
+    flex: 1;
+    padding-top: 2px;
+    display: flex;
+    align-items: baseline;
+    gap: .75rem;
+  }
+.timeline-mobile-conetent-text {
+    display: flex;
+    flex-direction: column;
+  }
+  .timeline-mobile-time {
+    background: #2f5d50;
+    color: white;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 4px;
+  }
+
+  .timeline-mobile-content h3 {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .timeline-mobile-content p {
+    margin: 4px 0 0;
+    font-size: 0.85rem;
+    color: #666;
+  }
+}
