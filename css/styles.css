@@ -49,6 +49,13 @@
   --z-tooltip: 500;
 }
 
+@font-face {
+  font-family: 'windsong';
+  src: url(/fonts/WindSong/WindSong-Regular.ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Reset and Base */
 *,
 *::before,
@@ -626,8 +633,9 @@ ul, ol {
 }
 
 .hero-title {
-  font-family: var(--font-script);
+  font-family: 'windsong';
   font-size: 5rem;
+  font-weight: normal;
   margin-bottom: var(--spacing-md);
   line-height: 1.2;
 }
@@ -636,14 +644,14 @@ ul, ol {
   display: block;
 }
 
-.hero-title .ampersand {
+/* .hero-title .ampersand {
   font-family: var(--font-heading);
   font-size: 2.5rem;
   font-weight: 300;
   font-style: italic;
   margin: var(--spacing-sm) 0;
   display: block;
-}
+} */
 
 .hero-divider {
   display: flex;
