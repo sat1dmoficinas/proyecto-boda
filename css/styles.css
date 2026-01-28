@@ -135,7 +135,7 @@ ul, ol {
 
 /* Sections */
 .section {
-  padding: var(--spacing-xl) 0;
+  padding: var(--spacing-md) 0;
   position: relative;
 }
 
@@ -774,7 +774,7 @@ ul, ol {
 
 /* Section Divider */
 .section-divider {
-  padding: var(--spacing-lg) 0;
+  padding: var(--spacing-md) 0;
 }
 
 .divider-content {
