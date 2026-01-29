@@ -199,8 +199,11 @@ class MainApp {
 
     checkAudioState() {
         if (this.backgroundAudio) {
+            // Verificar si el audio está reproduciéndose
             this.isMusicPlaying = !this.backgroundAudio.paused;
             this.updateMusicToggleIcon();
+            
+            console.log('Estado del audio:', this.isMusicPlaying ? 'Reproduciendo' : 'Pausado');
         }
     }
 
@@ -208,14 +211,21 @@ class MainApp {
         if (!this.backgroundAudio) return;
 
         if (this.backgroundAudio.paused) {
-            this.backgroundAudio.play().then(() => {
-                this.isMusicPlaying = true;
-                this.updateMusicToggleIcon();
-                this.trackEvent('music_played');
-            }).catch(error => {
-                console.log('Audio play failed:', error);
-            });
+            // Intentar reproducir
+            this.backgroundAudio.play()
+                .then(() => {
+                    this.isMusicPlaying = true;
+                    this.updateMusicToggleIcon();
+                    this.trackEvent('music_played');
+                })
+                .catch(error => {
+                    console.log('Audio play failed:', error);
+                    // Si falla, mantener el estado anterior
+                    this.isMusicPlaying = false;
+                    this.updateMusicToggleIcon();
+                });
         } else {
+            // Pausar
             this.backgroundAudio.pause();
             this.isMusicPlaying = false;
             this.updateMusicToggleIcon();
@@ -227,6 +237,7 @@ class MainApp {
         if (this.musicToggle) {
             const icon = this.musicToggle.querySelector('i');
             if (icon) {
+                // Usar el mismo ícono que en intro.js para consistencia
                 icon.className = this.isMusicPlaying ? 
                     'fas fa-volume-up' : 'fas fa-volume-mute';
             }
