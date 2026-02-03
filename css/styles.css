@@ -682,7 +682,7 @@ ul, ol {
 
 .hero-scroll {
   position: absolute;
-  bottom: 2px;
+  bottom: 20px;
   text-align: center;
 }
 

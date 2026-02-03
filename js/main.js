@@ -20,6 +20,7 @@ class MainApp {
         this.setupEventListeners();
         this.setupIntersectionObserver();
         this.setupScrollHandlers();
+        this.setupTimelineStagger();
         this.checkAudioState();
     }
 
@@ -137,6 +138,18 @@ class MainApp {
         });
     }
 
+    setupTimelineStagger() {
+        this.applyStaggeredAnimation('.timeline .timeline-item.animate-on-scroll', 0.01);
+        this.applyStaggeredAnimation('.timeline-mobile .timeline-mobile-item.animate-on-scroll', 0.01);
+    }
+
+    applyStaggeredAnimation(selector, delayStepSeconds) {
+        const items = document.querySelectorAll(selector);
+        items.forEach((item, index) => {
+            item.style.transitionDelay = `${index * delayStepSeconds}s`;
+        });
+    }
+
     toggleNavigation() {
         this.isNavOpen = !this.isNavOpen;
         
@@ -166,7 +179,7 @@ class MainApp {
     handleNavLinkClick(e) {
         e.preventDefault();
         
-        const targetId = this.getAttribute('href');
+        const targetId = e.currentTarget.getAttribute('href');
         if (!targetId || targetId === '#') return;
 
         const targetElement = document.querySelector(targetId);
