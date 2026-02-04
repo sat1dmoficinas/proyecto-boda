@@ -4,7 +4,8 @@ class RSVPForm {
         this.form = document.getElementById('rsvp-form');
         this.successMessage = document.getElementById('success-message');
         this.closeSuccessBtn = document.getElementById('close-success');
-        
+        this.rsvpEndpoint = 'https://script.google.com/macros/s/AKfycbwQgd712SR-D712EAp3ienx_LgT7M8jAe7jliolAeOF7U7Ny4PYTwQJytxoU6NnWnXM/exec';
+
         this.init();
     }
 
@@ -244,21 +245,29 @@ class RSVPForm {
     }
 
     async submitOnline(formData) {
-        // Here you would typically send to your server
-        // For now, we'll simulate an API call
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                // Simulate 90% success rate
-                const success = Math.random() > 0.1;
-                
-                if (success) {
-                    // Track successful submission
-                    this.trackSubmission(formData);
-                }
-                
-                resolve(success);
-            }, 1000);
-        });
+        if (!this.rsvpEndpoint.includes('REEMPLAZA_CON_TU_SCRIPT_ID')) {
+            const payload = new URLSearchParams();
+            Object.entries(formData).forEach(([key, value]) => {
+                const serializedValue = Array.isArray(value) ? value.join(', ') : value;
+                payload.append(key, serializedValue);
+            });
+
+            const response = await fetch(this.rsvpEndpoint, {
+                method: 'POST',
+                body: payload
+            });
+
+            if (response.ok) {
+                this.trackSubmission(formData);
+                return true;
+            }
+
+            console.warn('RSVP submission failed with status:', response.status);
+        } else {
+            console.warn('RSVP endpoint not configured. Update rsvpEndpoint with your Google Apps Script URL.');
+        }
+
+        return false;
     }
 
     saveOffline(formData) {
