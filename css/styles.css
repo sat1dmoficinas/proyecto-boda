@@ -1394,3 +1394,40 @@ ul, ol {
   transform: translateY(0);
 }
 
+/* Invitation message section */
+.invitation-section {
+  padding: 80px 0;
+}
+
+.invitation-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 24px;
+  padding: 48px 40px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.invitation-greeting {
+  font-family: var(--font-primary);
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  color: var(--color-dark);
+  margin-bottom: 16px;
+}
+
+.invitation-greeting span {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.invitation-text {
+  font-size: 1.1rem;
+  color: var(--color-muted);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.invitation-text:last-child {
+  margin-bottom: 0;
+}

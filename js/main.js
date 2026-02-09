@@ -21,6 +21,7 @@ class MainApp {
         this.setupIntersectionObserver();
         this.setupScrollHandlers();
         this.setupTimelineStagger();
+        this.setupInvitationGreeting();
         this.checkAudioState();
     }
 
@@ -150,6 +151,17 @@ class MainApp {
         });
     }
 
+    setupInvitationGreeting() {
+        const guestElement = document.getElementById('guest-name');
+        if (!guestElement) return;
+
+        const params = new URLSearchParams(window.location.search);
+        const guestParam = params.get('inv');
+        const guestName = guestParam ? guestParam.trim() : '';
+
+        guestElement.textContent = guestName || 'invitados';
+    }
+    
     toggleNavigation() {
         this.isNavOpen = !this.isNavOpen;
         
