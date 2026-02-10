@@ -1400,18 +1400,75 @@ ul, ol {
 }
 
 .invitation-card {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 24px;
-  padding: 48px 40px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
-  text-align: center;
-  max-width: 780px;
+  position: relative;
+  border-radius: 26px;
+  padding: 56px 44px;
+  max-width: 820px;
   margin: 0 auto;
+  overflow: hidden;
+  text-align: center;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.08);
+  background-color: rgba(255, 253, 248, 0.95);
+  background-image:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.9), rgba(255, 248, 230, 0.85)),
+    url('../assets/images/invitation-texture.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.invitation-card::before {
+  content: '';
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 18px;
+  pointer-events: none;
+}
+
+.invitation-content {
+  position: relative;
+  z-index: 2;
+}
+
+.invitation-decoration {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  opacity: 0.4;
+  pointer-events: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.invitation-decoration-top-left {
+  top: -24px;
+  left: -18px;
+  background-image: url('../assets/images/invitation-flower-top-left.png');
+}
+
+.invitation-decoration-top-right {
+  top: -24px;
+  right: -18px;
+  background-image: url('../assets/images/invitation-flower-top-right.png');
+}
+
+.invitation-decoration-bottom-left {
+  bottom: -30px;
+  left: -22px;
+  background-image: url('../assets/images/invitation-flower-bottom-left.png');
+}
+
+.invitation-decoration-bottom-right {
+  bottom: -30px;
+  right: -22px;
+  background-image: url('../assets/images/invitation-flower-bottom-right.png');
 }
 
 .invitation-greeting {
   font-family: var(--font-primary);
-  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-size: clamp(1.7rem, 2.6vw, 2.3rem);
   color: var(--color-dark);
   margin-bottom: 16px;
 }
@@ -1424,10 +1481,22 @@ ul, ol {
 .invitation-text {
   font-size: 1.1rem;
   color: var(--color-muted);
-  line-height: 1.7;
+  line-height: 1.75;
   margin-bottom: 12px;
 }
 
 .invitation-text:last-child {
   margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .invitation-card {
+    padding: 40px 24px;
+  }
+
+  .invitation-decoration {
+    width: 120px;
+    height: 120px;
+    opacity: 0.32;
+  }
 }
