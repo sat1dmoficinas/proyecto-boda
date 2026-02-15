@@ -152,7 +152,7 @@ class MainApp {
     }
 
     setupInvitationGreeting() {
-        const guestElement = document.getElementById('guest-name');
+        const guestElement = document.getElementById('invitation-guest-name');
         if (!guestElement) return;
 
         const params = new URLSearchParams(window.location.search);

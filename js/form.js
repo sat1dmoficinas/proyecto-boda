@@ -42,7 +42,7 @@ class RSVPForm {
         });
 
         // Other allergy input
-        const otherAllergyInput = document.getElementById('other-allergy');
+        const otherAllergyInput = this.form.querySelector('#other-allergy');
         if (otherAllergyInput) {
             otherAllergyInput.addEventListener('input', () => {
                 this.saveFormData();
@@ -52,14 +52,14 @@ class RSVPForm {
 
     setupFormValidation() {
         // Real-time validation
-        const nameInput = document.getElementById('guest-name');
+        const nameInput = this.form.querySelector('#guest-name');
         if (nameInput) {
             nameInput.addEventListener('blur', () => {
                 this.validateName(nameInput);
             });
         }
 
-        const emailInput = document.getElementById('guest-email');
+        const emailInput = this.form.querySelector('#guest-email');
         if (emailInput) {
             emailInput.addEventListener('blur', () => {
                 this.validateEmail(emailInput);
@@ -152,12 +152,12 @@ class RSVPForm {
         let isValid = true;
 
         // Validate required fields
-        const nameInput = document.getElementById('guest-name');
+        const nameInput = this.form.querySelector('#guest-name');
         if (!this.validateName(nameInput)) {
             isValid = false;
         }
 
-        const emailInput = document.getElementById('guest-email');
+        const emailInput = this.form.querySelector('#guest-email');
         if (emailInput.value.trim()) {
             if (!this.validateEmail(emailInput)) {
                 isValid = false;
@@ -203,13 +203,13 @@ class RSVPForm {
     getFormData() {
         const formData = {
             timestamp: new Date().toISOString(),
-            name: document.getElementById('guest-name').value.trim(),
-            email: document.getElementById('guest-email').value.trim(),
+            name: this.form.querySelector('#guest-name').value.trim(),
+            email: this.form.querySelector('#guest-email').value.trim(),
             attendance: this.form.querySelector('input[name="attendance"]:checked').value,
-            guests: parseInt(document.getElementById('guests-number').value),
+            guests: parseInt(this.form.querySelector('#guests-number').value),
             allergies: [],
-            otherAllergy: document.getElementById('other-allergy').value.trim(),
-            message: document.getElementById('guest-message').value.trim(),
+            otherAllergy: this.form.querySelector('#other-allergy').value.trim(),
+            message: this.form.querySelector('#guest-message').value.trim(),
             userAgent: navigator.userAgent,
             screenResolution: `${window.screen.width}x${window.screen.height}`,
             timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
@@ -331,7 +331,7 @@ class RSVPForm {
     clearForm() {
         this.form.reset();
         // Reset select to first option
-        const guestsSelect = document.getElementById('guests-number');
+        const guestsSelect = this.form.querySelector('#guests-number');
         if (guestsSelect) {
             guestsSelect.value = '1';
         }
@@ -340,14 +340,14 @@ class RSVPForm {
     saveFormData() {
         try {
             const formData = {
-                name: document.getElementById('guest-name').value,
-                email: document.getElementById('guest-email').value,
+                name: this.form.querySelector('#guest-name').value,
+                email: this.form.querySelector('#guest-email').value,
                 attendance: this.form.querySelector('input[name="attendance"]:checked')?.value || 'yes',
-                guests: document.getElementById('guests-number').value,
+                guests: this.form.querySelector('#guests-number').value,
                 allergies: Array.from(this.form.querySelectorAll('input[name="allergy"]:checked'))
                     .map(cb => cb.value),
-                otherAllergy: document.getElementById('other-allergy').value,
-                message: document.getElementById('guest-message').value
+                otherAllergy: this.form.querySelector('#other-allergy').value,
+                message: this.form.querySelector('#guest-message').value
             };
             
             localStorage.setItem('rsvpDraft', JSON.stringify(formData));
@@ -365,17 +365,17 @@ class RSVPForm {
 
             // Restore form values
             if (formData.name) {
-                document.getElementById('guest-name').value = formData.name;
+                this.form.querySelector('#guest-name').value = formData.name;
             }
             if (formData.email) {
-                document.getElementById('guest-email').value = formData.email;
+                this.form.querySelector('#guest-email').value = formData.email;
             }
             if (formData.attendance) {
                 const radio = this.form.querySelector(`input[name="attendance"][value="${formData.attendance}"]`);
                 if (radio) radio.checked = true;
             }
             if (formData.guests) {
-                document.getElementById('guests-number').value = formData.guests;
+                this.form.querySelector('#guests-number').value = formData.guests;
             }
             if (formData.allergies) {
                 formData.allergies.forEach(allergy => {
@@ -384,10 +384,10 @@ class RSVPForm {
                 });
             }
             if (formData.otherAllergy) {
-                document.getElementById('other-allergy').value = formData.otherAllergy;
+                this.form.querySelector('#other-allergy').value = formData.otherAllergy;
             }
             if (formData.message) {
-                document.getElementById('guest-message').value = formData.message;
+                this.form.querySelector('#guest-message').value = formData.message;
             }
         } catch (error) {
             console.error('Error loading form data:', error);
@@ -400,7 +400,7 @@ class RSVPForm {
 
     updateAllergyField() {
         const checkboxes = this.form.querySelectorAll('input[name="allergy"]:checked');
-        const otherAllergyInput = document.getElementById('other-allergy');
+        const otherAllergyInput = this.form.querySelector('#other-allergy');
         
         if (checkboxes.length > 0) {
             otherAllergyInput.placeholder = '¿Alguna otra alergia o restricción?';
