@@ -4,7 +4,7 @@ class RSVPForm {
         this.form = document.getElementById('rsvp-form');
         this.successMessage = document.getElementById('success-message');
         this.closeSuccessBtn = document.getElementById('close-success');
-        this.rsvpEndpoint = 'https://script.google.com/macros/s/AKfycbwQgd712SR-D712EAp3ienx_LgT7M8jAe7jliolAeOF7U7Ny4PYTwQJytxoU6NnWnXM/exec';
+        this.rsvpEndpoint = 'https://script.google.com/macros/s/AKfycbyjAQ-mvkww653V0vbVIjd2GAvQwOHhsXOf7erdRAcnwNFJc0Dg4qJo8B2tjUjELfCF/exec';
 
         this.init();
     }
@@ -55,41 +55,14 @@ class RSVPForm {
         const nameInput = this.form.querySelector('#guest-name');
         if (nameInput) {
             nameInput.addEventListener('blur', () => {
-                this.validateName(nameInput);
+                const value = nameInput.value.trim();
+                if (value.length < 2) {
+                    this.showError(nameInput, 'Por favor, introduce un nombre válido');
+                } else {
+                    this.clearError(nameInput);
+                }
             });
         }
-
-        const emailInput = this.form.querySelector('#guest-email');
-        if (emailInput) {
-            emailInput.addEventListener('blur', () => {
-                this.validateEmail(emailInput);
-            });
-        }
-    }
-
-    validateName(input) {
-        const value = input.value.trim();
-        if (value.length < 2) {
-            this.showError(input, 'Por favor, introduce un nombre válido');
-            return false;
-        }
-        this.clearError(input);
-        return true;
-    }
-
-    validateEmail(input) {
-        const value = input.value.trim();
-        if (value && !this.isValidEmail(value)) {
-            this.showError(input, 'Por favor, introduce un email válido');
-            return false;
-        }
-        this.clearError(input);
-        return true;
-    }
-
-    isValidEmail(email) {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(email);
     }
 
     showError(input, message) {
@@ -153,15 +126,20 @@ class RSVPForm {
 
         // Validate required fields
         const nameInput = this.form.querySelector('#guest-name');
-        if (!this.validateName(nameInput)) {
-            isValid = false;
-        }
-
-        const emailInput = this.form.querySelector('#guest-email');
-        if (emailInput.value.trim()) {
-            if (!this.validateEmail(emailInput)) {
-                isValid = false;
+        const nameValue = nameInput ? nameInput.value.trim() : '';
+        if (nameValue.length < 2) {
+            if (nameInput) {
+                this.showError(nameInput, 'Por favor, introduce un nombre válido');
             }
+            isValid = false;
+        } else if (nameInput) {
+            this.clearError(nameInput);
+        }
+        // Validate bus service selection
+        const busServiceSelected = this.form.querySelector('input[name="bus-service"]:checked');
+        if (!busServiceSelected) {
+            this.showFormError('Por favor, selecciona si necesitarás servicio de bus');
+            isValid = false;
         }
 
         // Validate attendance selection
@@ -204,8 +182,8 @@ class RSVPForm {
         const formData = {
             timestamp: new Date().toISOString(),
             name: this.form.querySelector('#guest-name').value.trim(),
-            email: this.form.querySelector('#guest-email').value.trim(),
-            attendance: this.form.querySelector('input[name="attendance"]:checked').value,
+            busService: this.form.querySelector('input[name="bus-service"]:checked')?.value || 'yes',
+            attendance: this.form.querySelector('input[name="attendance"]:checked')?.value || 'yes',
             guests: parseInt(this.form.querySelector('#guests-number').value),
             allergies: [],
             otherAllergy: this.form.querySelector('#other-allergy').value.trim(),
@@ -341,7 +319,7 @@ class RSVPForm {
         try {
             const formData = {
                 name: this.form.querySelector('#guest-name').value,
-                email: this.form.querySelector('#guest-email').value,
+                busService: this.form.querySelector('input[name="bus-service"]:checked')?.value || 'yes',
                 attendance: this.form.querySelector('input[name="attendance"]:checked')?.value || 'yes',
                 guests: this.form.querySelector('#guests-number').value,
                 allergies: Array.from(this.form.querySelectorAll('input[name="allergy"]:checked'))
@@ -367,8 +345,9 @@ class RSVPForm {
             if (formData.name) {
                 this.form.querySelector('#guest-name').value = formData.name;
             }
-            if (formData.email) {
-                this.form.querySelector('#guest-email').value = formData.email;
+            if (formData.busService) {
+                const busServiceRadio = this.form.querySelector(`input[name="bus-service"][value="${formData.busService}"]`);
+                if (busServiceRadio) busServiceRadio.checked = true;
             }
             if (formData.attendance) {
                 const radio = this.form.querySelector(`input[name="attendance"][value="${formData.attendance}"]`);
