@@ -682,7 +682,7 @@ ul, ol {
 
 .hero-scroll {
   position: absolute;
-  bottom: 20px;
+  bottom: 60px;
   text-align: center;
 }
 
@@ -1234,7 +1234,7 @@ ul, ol {
   color: var(--color-light);
   padding: var(--spacing-xl) 0;
   text-align: center;
-  min-height: 100vh;
+  min-height: 600px;
 }
 
 .footer-content {
@@ -1626,7 +1626,7 @@ ul, ol {
 }
 
 .invitation-card.animated .invitation-mancha {
-  transform: translateY(0) scale(1);
+  transform: translateX(-50%) translateY(0) scale(1);
   transition-delay: 0.45s;
 }
 
