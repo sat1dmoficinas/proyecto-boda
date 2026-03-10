@@ -1229,6 +1229,11 @@ ul, ol {
 }
 
 /* Footer */
+.footer[hidden] {
+  display: none !important;
+}
+
+
 .footer {
   background-color: var(--color-dark);
   color: var(--color-light);
@@ -1238,6 +1243,19 @@ ul, ol {
   text-align: center;
   justify-content: center;
   min-height: 100vh;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1200ms ease, transform 1200ms ease;
+}
+
+.footer.footer-reveal-start {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.footer.footer-reveal-start.footer-reveal-active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .footer-content {

@@ -4,6 +4,7 @@ class RSVPForm {
         this.form = document.getElementById('rsvp-form');
         this.successMessage = document.getElementById('success-message');
         this.closeSuccessBtn = document.getElementById('close-success');
+        this.footer = document.getElementById('site-footer');
         this.rsvpEndpoint = 'https://script.google.com/macros/s/AKfycbyjAQ-mvkww653V0vbVIjd2GAvQwOHhsXOf7erdRAcnwNFJc0Dg4qJo8B2tjUjELfCF/exec';
 
         this.init();
@@ -283,8 +284,18 @@ class RSVPForm {
             this.successMessage.classList.remove('hidden');
             this.form.classList.add('hidden');
             
-            // Scroll to success message
-            this.successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            if (this.footer) {
+                this.footer.hidden = false;
+                this.footer.classList.add('footer-reveal-start');
+
+                requestAnimationFrame(() => {
+                    this.footer.classList.add('footer-reveal-active');
+                    this.footer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            } else {
+                // Scroll to success message if footer is not available
+                this.successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
         }
     }
 
