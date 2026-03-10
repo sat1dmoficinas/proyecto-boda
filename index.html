@@ -33,82 +33,10 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
     
-    <!-- Open Graph for social sharing -->
-    <meta property="og:title" content="Boda Jeison y Sonia">
-    <meta property="og:description" content="Nos casamos el 5 de septiembre de 2026. ¡Esperamos verte en nuestra celebración!">
-    <meta property="og:image" content="assets/images/og-image.jpg">
-    <meta property="og:url" content="https://boda-jeison-sonia.com">
-    <meta property="og:type" content="website">
-    
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Boda Jeison y Sonia">
-    <meta name="twitter:description" content="Nos casamos el 5 de septiembre de 2026">
-    <meta name="twitter:image" content="assets/images/og-image.jpg">
-    
-    <!-- ANALYTICS - Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
-        
-        // Track intro completion
-        function trackIntroCompletion() {
-            gtag('event', 'intro_completed', {
-                'event_category': 'Engagement',
-                'event_label': 'User completed intro animation'
-            });
-        }
-        
-        // Track RSVP submission
-        function trackRSVPSubmission() {
-            gtag('event', 'rsvp_submitted', {
-                'event_category': 'Conversion',
-                'event_label': 'User submitted RSVP form'
-            });
-        }
-    </script>
-    
-    <!-- JSON-LD Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Event",
-        "name": "Boda de Jeison y Sonia",
-        "description": "Celebración del matrimonio de Jeison y Sonia",
-        "startDate": "2026-09-05T17:00:00",
-        "endDate": "2026-09-06T03:00:00",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-            "@type": "Place",
-            "name": "Finca La Losilla",
-            "address": {
-                "@type": "PostalAddress",
-                "addressCountry": "ES",
-                "addressRegion": "Islas Baleares"
-            }
-        },
-        "image": [
-            "https://boda-jeison-sonia.com/assets/images/og-image.jpg"
-        ],
-        "organizer": {
-            "@type": "Person",
-            "name": "Jeison y Sonia"
-        },
-        "performer": {
-            "@type": "Person",
-            "name": "Jeison y Sonia"
-        }
-    }
-    </script>
-    
     <!-- Preload critical resources -->
     <link rel="preload" href="css/styles.css" as="style">
     <link rel="preload" href="js/intro.js" as="script">
-    <link rel="preload" href="assets/videos/intro-video.mp4" as="video" type="video/mp4">
+    <link rel="preload" href="assets/videos/envelope-open.mp4" as="video" type="video/mp4">
     
     <!-- Progressive enhancement -->
     <noscript>
@@ -161,31 +89,6 @@
 
     <!-- Main Content (hidden initially) -->
     <main id="main-content" class="main-content hidden">
-        <!-- Navigation -->
-        <!--<nav class="main-nav js-only">
-            <div class="nav-container">
-                <div class="nav-brand">
-                    <span class="nav-logo">M&J</span>
-                    <span class="nav-date">08.05.2027</span>
-                </div>
-                <button class="nav-toggle" id="nav-toggle" aria-label="Menú">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <div class="nav-menu" id="nav-menu">
-                    <a href="#home" class="nav-link active">Inicio</a>
-                    <a href="#countdown" class="nav-link">Cuenta atrás</a>
-                    <a href="#details" class="nav-link">Detalles</a>
-                    <a href="#timeline" class="nav-link">Programa</a>
-                    <a href="#accommodation" class="nav-link">Alojamiento</a>
-                    <a href="#faq" class="nav-link">FAQ</a>
-                    <a href="#gifts" class="nav-link">Regalos</a>
-                    <a href="#rsvp" class="nav-link nav-cta">Confirmar</a>
-                </div>
-            </div>
-        </nav> -->
-
         <!-- Hero Section -->
         <section id="home" class="hero-section">
             <div class="hero-video-container">
@@ -246,9 +149,6 @@ Por eso, nos hace especial ilusión invitarte a compartir con nosotros un día t
                         <p class="invitation-text">Queremos celebrar nuestro amor rodeados de quienes forman parte de nuestra historia, reír, emocionarnos y crear recuerdos juntos.
 Tu presencia hará que este momento sea aún más bonito y completo para nosotros.</p>
                     </div>
-                </div>
-            </div>
-        </section>
                 </div>
             </div>
         </section>
@@ -338,8 +238,7 @@ Tu presencia hará que este momento sea aún más bonito y completo para nosotro
                         <a href="https://maps.app.goo.gl/tocqnTQqtnpCG8CG9" 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            class="btn btn-outline"
-                            onclick="gtag('event', 'open_maps', {'event_category': 'Engagement'})">
+                            class="btn btn-outline">
                             <i class="fas fa-map-marked-alt"></i>
                             Ver en Maps
                         </a>
@@ -347,8 +246,7 @@ Tu presencia hará que este momento sea aún más bonito y completo para nosotro
                         <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Jeison+y+Sonia&dates=20260905T170000Z/20270509T030000Z&location=Finca+La+Losilla&details=Invitación+para+la+boda+de+Jeison+y+Sonia"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="btn btn-outline"
-                            onclick="gtag('event', 'add_calendar', {'event_category': 'Engagement'})">
+                            class="btn btn-outline">
                             <i class="fas fa-calendar-plus"></i>
                             Añadir al calendario
                         </a>
@@ -555,71 +453,6 @@ Tu presencia hará que este momento sea aún más bonito y completo para nosotro
             </div>
         </div>
 
-        <!-- Accommodation Section -->
-        <!-- <section id="accommodation" class="section accommodation-section">
-            <div class="container">
-                <div class="section-header animate-on-scroll">
-                    <div class="section-icon">
-                        <i class="fas fa-bed"></i>
-                    </div>
-                    <h2 class="section-title">Alojamiento</h2>
-                    <p class="section-subtitle">Recomendaciones para tu estancia</p>
-                </div>
-                
-                <div class="accommodation-grid animate-on-scroll">
-                    Hotel 1
-                    <div class="accommodation-card">
-                        <div class="accommodation-header">
-                            <h3>Agroturismo Es Quatre Cantons</h3>
-                            <p class="accommodation-subtitle">Más cerca de la boda</p>
-                        </div>
-                        <div class="accommodation-features">
-                            <span class="feature-tag">✓ A 5 minutos</span>
-                            <span class="feature-tag">✓ Parking gratuito</span>
-                            <span class="feature-tag">✓ Desayuno incluido</span>
-                        </div>
-                        <div class="accommodation-actions">
-                            <a href="https://maps.app.goo.gl/qd2FewV6G4LyeJwA8" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            class="btn btn-small"
-                            onclick="gtag('event', 'view_hotel_1', {'event_category': 'Accommodation'})">
-                                <i class="fas fa-external-link-alt"></i>
-                                Ver detalles
-                            </a>
-                        </div>
-                    </div>
-                    
-                    Hotel 2 
-                    <div class="accommodation-card">
-                        <div class="accommodation-header">
-                            <h3>La Pérgola</h3>
-                            <p class="accommodation-subtitle">Alojamiento recomendado</p>
-                        </div>
-                        <div class="accommodation-features">
-                            <span class="feature-tag">✓ A 10 minutos</span>
-                            <span class="feature-tag">✓ Piscina</span>
-                            <span class="feature-tag">✓ Vistas al mar</span>
-                        </div>
-                        <div class="accommodation-actions">
-                            <a href="https://maps.app.goo.gl/YzWdsgTx8hJULbwRA" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            class="btn btn-small"
-                            onclick="gtag('event', 'view_hotel_2', {'event_category': 'Accommodation'})">
-                                <i class="fas fa-external-link-alt"></i>
-                                Ver detalles
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="accommodation-note animate-on-scroll">
-                    <p><strong>Nota:</strong> Te recomendamos reservar con antelación debido a la temporada alta.</p>
-                </div>
-            </div>
-        </section> -->
-
         <!-- FAQ Section -->
         <section id="faq" class="section faq-section">
             <div class="container">
@@ -701,44 +534,6 @@ Ven como te sientas mejor, elegante o más informal, pero sobre todo cómodo/a p
             </div>
         </section>
 
-        <!-- Gifts Section -->
-        <!-- <section id="gifts" class="section gifts-section">
-            <div class="container">
-                <div class="section-header animate-on-scroll">
-                    <h2 class="section-title">Regalos</h2>
-                </div>
-                
-                <div class="gifts-content animate-on-scroll">
-                    <div class="gifts-message">
-                        <p class="gifts-text">
-                            Vuestra presencia es el mejor regalo que podríamos recibir.<br>
-                            Si deseas hacernos un detalle, puedes colaborar con nuestra luna de miel.
-                        </p>
-                        
-                        <div class="gifts-info">
-                            <div class="gift-option">
-                                <div class="gift-icon">
-                                    <i class="fas fa-hands-helping"></i>
-                                </div>
-                                <div class="gift-details">
-                                    <h3>Aportación</h3>
-                                    <p>Puedes realizar una transferencia a nuestra cuenta bancaria</p>
-                                    <div class="bank-details">
-                                        <p><strong>ESXX XXXX XXXX XXXX XXXX XXXX</strong></p>
-                                        <p>A nombre de: Jeison y Sonia</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="gifts-note">
-                            <p><i class="fas fa-heart"></i> Lo más importante es que vengas a celebrar con nosotros este día tan especial.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-        
         <!-- RSVP Section -->
         <section id="rsvp" class="section rsvp-section">
             <div class="container">
@@ -886,7 +681,6 @@ Ven como te sientas mejor, elegante o más informal, pero sobre todo cómodo/a p
 
         <!-- Footer -->
         <footer class="footer">
-            <div class="container">
                 <div class="footer-content">
                     <div class="footer-heart">
                         <i class="fas fa-heart"></i>
@@ -898,32 +692,14 @@ Ven como te sientas mejor, elegante o más informal, pero sobre todo cómodo/a p
                     <div class="footer-social">
                         <p>Gracias por confirmar tu asistencia a través del formulario.
 Sea cual sea tu respuesta, valoramos mucho que te hayas tomado el tiempo de contestar.</p>
-                        <!-- <div class="social-icons">
-                            <button class="social-icon" onclick="shareOnFacebook()" aria-label="Compartir en Facebook">
-                                <i class="fab fa-facebook-f"></i>
-                            </button>
-                            <button class="social-icon" onclick="shareOnWhatsApp()" aria-label="Compartir en WhatsApp">
-                                <i class="fab fa-whatsapp"></i>
-                            </button>
-                            <button class="social-icon" onclick="shareByEmail()" aria-label="Compartir por email">
-                                <i class="fas fa-envelope"></i>
-                            </button>
-                        </div> -->
                     </div>
                     
                     <div class="footer-copyright">
-                        <!-- <p>Con ❤️ para nuestros invitados</p> -->
                         <p class="footer-note">Hecho con amor por Jeison y Sonia</p>
                     </div>
                 </div>
-            </div>
         </footer>
     </main>
-
-    <!-- Back to Top -->
-    <!-- <button id="back-to-top" class="back-to-top js-only" aria-label="Volver arriba">
-        <i class="fas fa-chevron-up"></i>
-    </button> -->
 
     <!-- JavaScript Files -->
     <script src="js/intro.js" defer></script>

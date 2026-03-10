@@ -1233,8 +1233,11 @@ ul, ol {
   background-color: var(--color-dark);
   color: var(--color-light);
   padding: var(--spacing-xl) 0;
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  min-height: 600px;
+  justify-content: center;
+  min-height: 100vh;
 }
 
 .footer-content {
@@ -1300,13 +1303,12 @@ ul, ol {
 }
 
 .footer-copyright {
-  margin-top: var(--spacing-xl);
-  padding-top: var(--spacing-md);
+  margin-top: auto;
+  padding: var(--spacing-md);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-copyright p {
-  margin-bottom: var(--spacing-xs);
   font-size: 0.875rem;
   opacity: 0.8;
 }

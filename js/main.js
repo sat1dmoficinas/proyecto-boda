@@ -241,7 +241,6 @@ class MainApp {
                 .then(() => {
                     this.isMusicPlaying = true;
                     this.updateMusicToggleIcon();
-                    this.trackEvent('music_played');
                 })
                 .catch(error => {
                     console.log('Audio play failed:', error);
@@ -254,7 +253,6 @@ class MainApp {
             this.backgroundAudio.pause();
             this.isMusicPlaying = false;
             this.updateMusicToggleIcon();
-            this.trackEvent('music_paused');
         }
     }
 
@@ -285,44 +283,17 @@ class MainApp {
         question.setAttribute('aria-expanded', !isExpanded);
         answer.classList.toggle('open');
 
-        // Track FAQ interaction
-        this.trackEvent('faq_toggled', {
-            question: question.textContent.trim(),
-            expanded: !isExpanded
-        });
     }
 
     onIntroCompleted() {
         // Initialize any components that depend on intro completion
         console.log('Main app initialized after intro completion');
-        
-        // Track page view
-        this.trackPageView();
     }
 
     handleResize() {
         // Close navigation on resize to desktop
         if (window.innerWidth >= 768 && this.isNavOpen) {
             this.closeNavigation();
-        }
-    }
-
-    trackPageView() {
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'page_view', {
-                page_title: document.title,
-                page_location: window.location.href,
-                page_path: window.location.pathname
-            });
-        }
-    }
-
-    trackEvent(eventName, data = {}) {
-        if (typeof gtag !== 'undefined') {
-            gtag('event', eventName, {
-                event_category: 'Engagement',
-                ...data
-            });
         }
     }
 }
@@ -337,13 +308,6 @@ function shareOnFacebook() {
     const url = encodeURIComponent(window.location.href);
     const text = encodeURIComponent('Invitación para la boda de Jeison y Sonia');
     window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`, '_blank');
-    
-    if (typeof gtag !== 'undefined') {
-        gtag('event', 'share', {
-            method: 'Facebook',
-            content_type: 'invitation'
-        });
-    }
 }
 
 function shareOnWhatsApp() {
@@ -362,11 +326,4 @@ function shareByEmail() {
     const subject = encodeURIComponent('Invitación Boda Jeison y Sonia');
     const body = encodeURIComponent(`Te invito a ver la invitación digital para la boda de Jeison y Sonia:\n\n${window.location.href}`);
     window.open(`mailto:?subject=${subject}&body=${body}`);
-    
-    if (typeof gtag !== 'undefined') {
-        gtag('event', 'share', {
-            method: 'Email',
-            content_type: 'invitation'
-        });
-    }
 }

@@ -236,7 +236,6 @@ class RSVPForm {
             });
 
             if (response.ok) {
-                this.trackSubmission(formData);
                 return true;
             }
 
@@ -254,13 +253,6 @@ class RSVPForm {
             const submissions = JSON.parse(localStorage.getItem('rsvpSubmissions') || '[]');
             submissions.push(formData);
             localStorage.setItem('rsvpSubmissions', JSON.stringify(submissions));
-            
-            // Register for background sync if available
-            if ('serviceWorker' in navigator && 'SyncManager' in window) {
-                navigator.serviceWorker.ready.then(registration => {
-                    return registration.sync.register('sync-rsvp');
-                });
-            }
             
             return true;
         } catch (error) {
@@ -281,9 +273,6 @@ class RSVPForm {
         
         // Clear saved form data
         this.clearFormData();
-        
-        // Track conversion
-        this.trackConversion(formData);
         
         // Send confirmation email (simulated)
         this.sendConfirmationEmail(formData);
@@ -386,54 +375,6 @@ class RSVPForm {
         } else {
             otherAllergyInput.placeholder = 'Ej: alergia al huevo, intolerancia a la fructosa...';
         }
-    }
-
-    trackSubmission(formData) {
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'rsvp_submitted', {
-                event_category: 'Conversion',
-                event_label: 'RSVP Form Submission',
-                value: 1,
-                guest_count: formData.guests,
-                attendance: formData.attendance
-            });
-        }
-    }
-
-    trackConversion(formData) {
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'conversion', {
-                send_to: 'AW-XXXXXXXXX/YYYYYYYYYYYY',
-                value: 1.0,
-                currency: 'EUR',
-                transaction_id: `rsvp_${Date.now()}_${formData.name}`
-            });
-        }
-    }
-
-    sendConfirmationEmail(formData) {
-        // This is where you would integrate with your email service
-        // For example: SendGrid, Mailchimp, or your own backend
-        
-        console.log('Confirmation email would be sent for:', formData);
-        
-        // Example fetch to your backend
-        /*
-        fetch('/api/send-confirmation', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Confirmation email sent:', data);
-        })
-        .catch(error => {
-            console.error('Error sending confirmation email:', error);
-        });
-        */
     }
 }
 

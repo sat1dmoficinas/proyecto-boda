@@ -100,8 +100,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // 3. AL TOCAR CUALQUIER PARTE - REPRODUCIR VIDEO
-    function startVideoOnTouch(e) {
+    // 3. AL INTERACTUAR - REPRODUCIR VIDEO Y AUDIO
+    function startVideoOnTouch() {
         if (videoStarted) return;
         videoStarted = true;
         
@@ -138,12 +138,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Remover listeners para evitar múltiples ejecuciones
         document.removeEventListener('click', startVideoOnTouch);
-        document.removeEventListener('touchstart', startVideoOnTouch);
+        document.removeEventListener('pointerup', startVideoOnTouch);
     }
     
     // 4. CONFIGURAR INTERACCIÓN EN TODA LA PANTALLA
     document.addEventListener('click', startVideoOnTouch);
-    document.addEventListener('touchstart', startVideoOnTouch);
+    document.addEventListener('pointerup', startVideoOnTouch);
     
     // 5. CUANDO EL VIDEO TERMINA
     if (introVideo) {
